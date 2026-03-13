@@ -1,0 +1,12 @@
+/* Student UI tweaks */
+.dashboard-card {
+    background: #f8faff;
+    border: 1px solid #d8e2ff;
+    border-radius: 12px;
+    transition: .2s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(31,59,179,0.2);
+}

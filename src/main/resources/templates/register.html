@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Use layout header/footer -->
+<th:block th:replace="layout :: page(~{::body})"></th:block>
+
+<body style="background:#f8f9ff;">
+
+<!-- Center container -->
+<div class="d-flex align-items-center justify-content-center"
+     style="min-height: calc(100vh - 80px);">
+
+    <div class="p-5 shadow rounded bg-white" style="width:450px;">
+        <h3 class="text-center fw-bold mb-3">Create Account ✨</h3>
+
+        <form th:action="@{/register}" method="post">
+
+            <div class="mb-3">
+                <label class="fw-semibold">Full Name</label>
+                <input type="text" class="form-control" name="name" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="fw-semibold">Email</label>
+                <input type="email" class="form-control" name="email" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="fw-semibold">Password</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="fw-semibold">Role</label>
+                <select class="form-select" name="role" required>
+                    <option value="STUDENT">Student</option>
+                    <option value="TEACHER">Teacher</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">
+                Register
+            </button>
+
+            <div class="text-center mt-3">
+                <a href="/login" class="text-decoration-none">Already have an account? Login</a>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
+
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Use layout header/footer -->
+<th:block th:replace="layout :: page(~{::body})"></th:block>
+
+<body style="background:#f8f9ff;">
+
+<!-- Full screen flex container -->
+<div class="d-flex align-items-center justify-content-center" 
+     style="min-height: calc(100vh - 80px);">
+
+    <div class="p-5 shadow rounded bg-white" style="width:400px;">
+        <h3 class="text-center fw-bold mb-4">Online Quiz Portal</h3>
+
+        <form th:action="@{/login}" method="post">
+
+            <div class="mb-3">
+                <label class="fw-semibold">Enter Email ID</label>
+                <input type="email" class="form-control" name="email" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="fw-semibold">Enter Password</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">
+                Login
+            </button>
+
+            <div class="text-center mt-3">
+                <a href="/register" class="text-decoration-none">Create account</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

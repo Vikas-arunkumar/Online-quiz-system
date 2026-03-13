@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: page(~{::body})}">
+
+<body>
+<div class="container mt-4">
+
+    <h3 class="mb-3 fw-bold">📚 Available Quizzes</h3>
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-primary">
+        <tr>
+            <th>#</th>
+            <th>Quiz Title</th>
+            <th>Topic</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="quiz, i : ${quizzes}">
+            <td th:text="${i.index + 1}"></td>
+            <td th:text="${quiz.title}"></td>
+            <td th:text="${quiz.topic}"></td>
+            <td>
+                <a class="btn btn-success btn-sm" th:href="@{'/student/quiz/' + ${quiz.id}}">
+                    Start Quiz ▶
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

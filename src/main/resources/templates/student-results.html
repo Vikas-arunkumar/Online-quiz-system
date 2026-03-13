@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: page(~{::body})}">
+
+<body>
+<div class="container mt-4">
+
+    <h2 class="fw-bold mb-3 text-primary">
+        📊 Your Quiz Results
+    </h2>
+
+    <div class="card shadow p-4">
+
+        <table class="table table-striped table-hover text-center align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Quiz</th>
+                    <th>Score</th>
+                    <th>Correct</th>
+                    <th>Total</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="res, i : ${results}">
+                    <td th:text="${i.index + 1}"></td>
+                    <td th:text="${res.quiz.title}"></td>
+
+                    <td>
+                        <span class="badge"
+                              th:text="${res.scorePercent} + '%'"
+                              th:classappend="${res.scorePercent >= 75} ? 'bg-success' :
+                                              (${res.scorePercent >= 50} ? 'bg-warning' : 'bg-danger')">
+                        </span>
+                    </td>
+
+                    <td th:text="${res.correctAnswers}"></td>
+                    <td th:text="${res.totalQuestions}"></td>
+                    <td th:text="${#temporals.format(res.submittedAt, 'dd-MM-yyyy HH:mm')}"></td>
+                </tr>
+
+                <tr th:if="${#lists.isEmpty(results)}">
+                    <td colspan="6" class="text-muted py-4">
+                        😕 No quiz attempts yet — go try one!
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="text-center mt-3">
+            <a href="/student/dashboard" class="btn btn-secondary">⬅ Back to Dashboard</a>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
+

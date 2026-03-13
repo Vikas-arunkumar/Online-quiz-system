@@ -1,0 +1,12 @@
+/* Teacher UI tweaks */
+.dashboard-card {
+    background: #fff9f3;
+    border: 1px solid #ffd7b3;
+    border-radius: 12px;
+    transition: .2s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(255,150,0,0.25);
+}

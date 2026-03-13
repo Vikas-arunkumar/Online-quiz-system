@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: page(~{::body})}">
+<body>
+
+<div class="container mt-4">
+
+    <h2 class="fw-bold mb-3">📊 Student Results by Quiz Topic</h2>
+
+    <div th:each="entry : ${resultsGrouped}">
+        <h4 class="text-primary mt-4" th:text="${entry.key}"></h4>
+
+        <table class="table table-bordered mt-2 mb-4">
+            <thead class="table-dark">
+                <tr>
+                    <th>Student</th>
+                    <th>Score (%)</th>
+                    <th>Correct</th>
+                    <th>Total</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="res : ${entry.value}">
+                    <td th:text="${res.student.name}"></td>
+                    <td th:text="${res.scorePercent}"></td>
+                    <td th:text="${res.correctAnswers}"></td>
+                    <td th:text="${res.totalQuestions}"></td>
+                    <td th:text="${#temporals.format(res.submittedAt,'dd MMM yyyy HH:mm')}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>
